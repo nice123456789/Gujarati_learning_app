@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gujarati Alphabets</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Gujarati:wght@400;600;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --saffron: #E8621A;
+    --saffron-light: #F28C45;
+    --saffron-pale: #FDF0E8;
+    --ink: #1C1009;
+    --ink-muted: #6B4A2A;
+    --cream: #FBF5EE;
+    --cream-dark: #F0E6D6;
+    --teal: #0F6E6E;
+    --teal-light: #E0F0F0;
+    --gold: #C9921A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Crimson Pro', Georgia, serif;
+    min-height: 100vh;
+  }
+
+  header {
+    background: var(--ink);
+    padding: 2rem 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  header::before {
+    content: 'ગ';
+    position: absolute;
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 200px;
+    color: rgba(255,255,255,0.04);
+    top: -40px;
+    left: -20px;
+    line-height: 1;
+  }
+  header::after {
+    content: 'ક';
+    position: absolute;
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 160px;
+    color: rgba(232,98,26,0.08);
+    bottom: -30px;
+    right: 10px;
+    line-height: 1;
+  }
+
+  .header-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--saffron-light);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: clamp(28px, 5vw, 48px);
+    color: #fff;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .header-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.55);
+    font-style: italic;
+    font-weight: 300;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+    padding: 14px 16px;
+    background: var(--ink);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    flex-wrap: wrap;
+  }
+  .nav-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    padding: 7px 16px;
+    border-radius: 2px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .nav-btn:hover { border-color: var(--saffron); color: var(--saffron-light); }
+  .nav-btn.active { background: var(--saffron); border-color: var(--saffron); color: #fff; }
+
+  main { max-width: 960px; margin: 0 auto; padding: 2rem 1rem 4rem; }
+
+  .section { display: none; }
+  .section.active { display: block; }
+
+  .section-heading {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--saffron);
+    margin-bottom: 6px;
+    margin-top: 2rem;
+  }
+  .section-heading:first-child { margin-top: 0; }
+
+  .section-title {
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+    line-height: 1.2;
+  }
+  .section-desc {
+    font-size: 15px;
+    color: var(--ink-muted);
+    margin-bottom: 1.5rem;
+    font-style: italic;
+  }
+
+  /* Alphabet grid */
+  .alpha-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+
+  .alpha-card {
+    background: #fff;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 6px;
+    padding: 14px 10px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+  .alpha-card:hover {
+    border-color: var(--saffron);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(232,98,26,0.12);
+  }
+  .alpha-card.selected {
+    border-color: var(--saffron);
+    background: var(--saffron-pale);
+  }
+
+  .alpha-guj {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.2;
+    display: block;
+  }
+  .alpha-roman {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--saffron);
+    margin-top: 4px;
+    display: block;
+    letter-spacing: 0.05em;
+  }
+  .alpha-eng {
+    font-size: 12px;
+    color: var(--ink-muted);
+    margin-top: 2px;
+    display: block;
+  }
+
+  /* Detail panel */
+  .detail-panel {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 1.5rem;
+    display: none;
+    animation: fadeIn 0.2s ease;
+  }
+  .detail-panel.show { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+  .detail-big {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 80px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .detail-info { flex: 1; min-width: 180px; }
+  .detail-roman {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    color: var(--saffron-light);
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+  .detail-name {
+    font-size: 18px;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 8px;
+    font-style: italic;
+  }
+  .detail-example {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .detail-type-badge {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    padding: 4px 10px;
+    border-radius: 2px;
+    background: rgba(232,98,26,0.2);
+    color: var(--saffron-light);
+    display: inline-block;
+    margin-bottom: 8px;
+  }
+
+  /* Matra section */
+  .matra-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+    margin-bottom: 1.5rem;
+  }
+  .matra-card {
+    background: #fff;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 6px;
+    padding: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .matra-symbol {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--saffron);
+    min-width: 36px;
+    text-align: center;
+  }
+  .matra-info { flex: 1; }
+  .matra-roman { font-family: 'Space Mono', monospace; font-size: 12px; color: var(--ink); }
+  .matra-example { font-size: 13px; color: var(--ink-muted); margin-top: 2px; }
+
+  /* Numbers */
+  .num-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+    margin-bottom: 2rem;
+  }
+  .num-card {
+    background: #fff;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 6px;
+    padding: 12px 8px;
+    text-align: center;
+  }
+  .num-guj { font-family: 'Noto Serif Gujarati', serif; font-size: 32px; font-weight: 600; color: var(--ink); display: block; }
+  .num-arabic { font-family: 'Space Mono', monospace; font-size: 18px; color: var(--saffron); display: block; margin-top: 4px; }
+  .num-word { font-size: 12px; color: var(--ink-muted); margin-top: 2px; display: block; }
+
+  /* Quiz */
+  .quiz-box {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 2rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  .quiz-question { font-family: 'Noto Serif Gujarati', serif; font-size: 72px; color: #fff; font-weight: 700; margin-bottom: 8px; }
+  .quiz-prompt { font-size: 15px; color: rgba(255,255,255,0.5); font-style: italic; margin-bottom: 1.5rem; }
+  .quiz-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto 1.5rem;
+  }
+  .quiz-opt {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    padding: 12px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: transparent;
+    color: rgba(255,255,255,0.8);
+    cursor: pointer;
+    transition: all 0.15s;
+    letter-spacing: 0.05em;
+  }
+  .quiz-opt:hover { border-color: var(--saffron-light); color: #fff; }
+  .quiz-opt.correct { background: #0F6E56; border-color: #1D9E75; color: #fff; }
+  .quiz-opt.wrong { background: #7A1F1F; border-color: #A32D2D; color: #fff; }
+
+  .quiz-score {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 1rem;
+  }
+  .quiz-feedback {
+    font-size: 16px;
+    height: 24px;
+    margin-bottom: 1rem;
+    font-style: italic;
+    color: var(--saffron-light);
+  }
+  .quiz-next {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    padding: 10px 28px;
+    border-radius: 4px;
+    background: var(--saffron);
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.15s;
+    display: none;
+  }
+  .quiz-next:hover { background: var(--saffron-light); }
+  .quiz-next.show { display: inline-block; }
+
+  .tip-box {
+    background: var(--teal-light);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 6px 6px 0;
+    padding: 12px 16px;
+    margin-bottom: 1rem;
+    font-size: 14px;
+    color: #0a3d3d;
+  }
+  .tip-box strong { font-weight: 600; color: var(--teal); }
+
+  .divider {
+    height: 1px;
+    background: var(--cream-dark);
+    margin: 1.5rem 0;
+  }
+
+  /* Conversations */
+  .conv-topics {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 1.5rem;
+  }
+  .topic-btn {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.06em;
+    padding: 7px 14px; border-radius: 2px;
+    border: 1px solid var(--cream-dark);
+    background: #fff; color: var(--ink-muted);
+    cursor: pointer; transition: all 0.15s;
+  }
+  .topic-btn:hover { border-color: var(--saffron); color: var(--saffron); }
+  .topic-btn.active { background: var(--saffron); border-color: var(--saffron); color: #fff; }
+
+  .conv-block { display: none; animation: fadeIn 0.2s ease; }
+  .conv-block.active { display: block; }
+
+  .conv-intro {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 1.2rem 1.5rem;
+    margin-bottom: 1.2rem;
+    display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+  }
+  .conv-intro-icon {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 40px; color: var(--saffron-light); flex-shrink: 0;
+  }
+  .conv-intro-text { flex: 1; }
+  .conv-intro-title { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px; }
+  .conv-intro-desc { font-size: 13px; color: rgba(255,255,255,0.5); font-style: italic; }
+
+  .phrase-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 1.5rem; }
+
+  .phrase-card {
+    background: #fff;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: 8px;
+    padding: 14px 16px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  .phrase-card:hover { border-color: var(--saffron); box-shadow: 0 4px 14px rgba(232,98,26,0.08); }
+  .phrase-card.expanded { border-color: var(--saffron); background: var(--saffron-pale); }
+
+  .phrase-top { display: flex; align-items: flex-start; gap: 12px; }
+  .phrase-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; color: var(--saffron);
+    background: var(--saffron-pale);
+    border: 1px solid rgba(232,98,26,0.2);
+    border-radius: 2px; padding: 3px 7px;
+    flex-shrink: 0; margin-top: 2px;
+  }
+  .phrase-main { flex: 1; }
+  .phrase-guj {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--ink); line-height: 1.3; margin-bottom: 4px;
+  }
+  .phrase-roman {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px; color: var(--saffron); letter-spacing: 0.04em;
+  }
+  .phrase-eng { font-size: 14px; color: var(--ink-muted); margin-top: 4px; font-style: italic; }
+
+  .phrase-detail {
+    display: none; margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(232,98,26,0.15);
+  }
+  .phrase-card.expanded .phrase-detail { display: block; }
+
+  .phrase-note {
+    font-size: 13px; color: var(--ink-muted);
+    line-height: 1.6; margin-bottom: 8px;
+  }
+  .phrase-usage {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.06em;
+    background: var(--teal-light); color: var(--teal);
+    border-radius: 2px; padding: 6px 10px;
+    display: inline-block;
+  }
+
+  .dialogue-box {
+    background: var(--ink);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .dialogue-title {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.2em;
+    text-transform: uppercase; color: var(--saffron-light);
+    margin-bottom: 1rem;
+  }
+  .dialogue-line {
+    display: flex; gap: 10px; margin-bottom: 14px; align-items: flex-start;
+  }
+  .dialogue-line:last-child { margin-bottom: 0; }
+  .speaker-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; padding: 3px 8px; border-radius: 2px;
+    flex-shrink: 0; margin-top: 3px; letter-spacing: 0.05em;
+  }
+  .speaker-a { background: rgba(232,98,26,0.2); color: var(--saffron-light); }
+  .speaker-b { background: rgba(15,110,110,0.2); color: #5DC8C8; }
+  .dialogue-content { flex: 1; }
+  .dial-guj {
+    font-family: 'Noto Serif Gujarati', serif;
+    font-size: 18px; font-weight: 600; color: #fff;
+    line-height: 1.3; margin-bottom: 2px;
+  }
+  .dial-roman {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; color: rgba(255,255,255,0.4);
+    margin-bottom: 2px; letter-spacing: 0.03em;
+  }
+  .dial-eng { font-size: 13px; color: rgba(255,255,255,0.55); font-style: italic; }
+
+  .progress-strip {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+    background: var(--cream-dark);
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+  .prog-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--cream);
+    border: 1.5px solid var(--ink-muted);
+  }
+  .prog-dot.done { background: var(--saffron); border-color: var(--saffron); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-label">Interactive Learning</div>
+  <h1>ગુજરાતી વર્ણમાળા</h1>
+  <div class="header-sub">Gujarati Alphabet — Complete Guide</div>
+</header>
+
+<nav>
+  <button class="nav-btn active" onclick="showSection('vowels')">Vowels (સ્વર)</button>
+  <button class="nav-btn" onclick="showSection('consonants')">Consonants (વ્યંજન)</button>
+  <button class="nav-btn" onclick="showSection('matras')">Vowel Signs (માત્રા)</button>
+  <button class="nav-btn" onclick="showSection('numbers')">Numbers (અંક)</button>
+  <button class="nav-btn" onclick="showSection('conversations')">Conversations (વાર્તાલાપ)</button>
+  <button class="nav-btn" onclick="showSection('quiz')">Quiz</button>
+</nav>
+
+<main>
+
+<!-- VOWELS -->
+<div class="section active" id="sec-vowels">
+  <div class="section-heading">Section 01</div>
+  <div class="section-title">Vowels — સ્વર (Svar)</div>
+  <div class="section-desc">Gujarati has 13 vowels. They can stand alone or attach to consonants as vowel signs (matras).</div>
+
+  <div class="tip-box">
+    <strong>Tip:</strong> Gujarati does not have the horizontal line (शिरोरेखा) that Hindi/Devanagari has. The letters are rounder and slightly simpler. Click any letter to learn more.
+  </div>
+
+  <div id="vowel-detail" class="detail-panel"></div>
+
+  <div class="alpha-grid" id="vowel-grid"></div>
+</div>
+
+<!-- CONSONANTS -->
+<div class="section" id="sec-consonants">
+  <div class="section-heading">Section 02</div>
+  <div class="section-title">Consonants — વ્યંજન (Vyanjan)</div>
+  <div class="section-desc">34 consonants, organised in groups by where in the mouth they are produced — just like Sanskrit.</div>
+
+  <div class="tip-box">
+    <strong>Tip:</strong> Gujarati consonants are grouped by articulation point — throat (કઠ), palate (તાળવું), teeth (દાંત) etc. Learning them in order makes pronunciation natural.
+  </div>
+
+  <div id="cons-detail" class="detail-panel"></div>
+
+  <div id="cons-groups"></div>
+</div>
+
+<!-- MATRAS -->
+<div class="section" id="sec-matras">
+  <div class="section-heading">Section 03</div>
+  <div class="section-title">Vowel Signs — માત્રા (Maatra)</div>
+  <div class="section-desc">When vowels attach to consonants, they become "matras" — small signs written around the consonant letter.</div>
+
+  <div class="tip-box">
+    <strong>Example:</strong> ક (ka) + િ (i matra) = કિ (ki). The vowel sign wraps around the consonant.
+  </div>
+
+  <div id="matra-grid"></div>
+</div>
+
+<!-- NUMBERS -->
+<div class="section" id="sec-numbers">
+  <div class="section-heading">Section 04</div>
+  <div class="section-title">Numbers — અંક (Ank)</div>
+  <div class="section-desc">Gujarati has its own numeral system, though Arabic numerals (0–9) are also widely used today.</div>
+
+  <div class="num-grid" id="num-grid"></div>
+</div>
+
+<!-- CONVERSATIONS -->
+<div class="section" id="sec-conversations">
+  <div class="section-heading">Section 05</div>
+  <div class="section-title">Daily Conversations — વાર્તાલાપ (Vaartalaap)</div>
+  <div class="section-desc">Real phrases used every day in Vadodara and across Gujarat. Click any phrase to see notes and usage tips.</div>
+
+  <div class="conv-topics" id="conv-topics"></div>
+  <div id="conv-content"></div>
+</div>
+
+<!-- QUIZ -->
+<div class="section" id="sec-quiz">
+  <div class="section-heading">Section 05</div>
+  <div class="section-title">Quiz — કસોટી (Kasoti)</div>
+  <div class="section-desc">What does this letter sound like? Choose the correct romanisation.</div>
+
+  <div id="quiz-progress" class="progress-strip"></div>
+
+  <div class="quiz-box">
+    <div class="quiz-question" id="q-letter">ક</div>
+    <div class="quiz-prompt">What is the pronunciation of this letter?</div>
+    <div class="quiz-score" id="q-score">Score: 0 / 0</div>
+    <div class="quiz-feedback" id="q-feedback"></div>
+    <div class="quiz-options" id="q-options"></div>
+    <button class="quiz-next" id="q-next" onclick="nextQuestion()">Next →</button>
+  </div>
+</div>
+
+</main>
+
+<script>
+const vowels = [
+  {g:'અ',r:'a',name:'A',ex:'as in "sun"'},
+  {g:'આ',r:'aa',name:'Aa',ex:'as in "father"'},
+  {g:'ઇ',r:'i',name:'I',ex:'as in "bit"'},
+  {g:'ઈ',r:'ii',name:'Ii (long)',ex:'as in "feet"'},
+  {g:'ઉ',r:'u',name:'U',ex:'as in "put"'},
+  {g:'ઊ',r:'uu',name:'Uu (long)',ex:'as in "pool"'},
+  {g:'એ',r:'e',name:'E',ex:'as in "say"'},
+  {g:'ઐ',r:'ai',name:'Ai',ex:'as in "rain"'},
+  {g:'ઓ',r:'o',name:'O',ex:'as in "go"'},
+  {g:'ઔ',r:'au',name:'Au',ex:'as in "cow"'},
+  {g:'અં',r:'an',name:'Anusvara',ex:'nasal "n" sound'},
+  {g:'અઃ',r:'ah',name:'Visarga',ex:'breathy "h" at end'},
+  {g:'ઋ',r:'ru',name:'Ru',ex:'as in "rung" (rare)'},
+];
+
+const consonantGroups = [
+  {name:'Velar — કકારાદિ (from throat/back)',roman:'ka-group',letters:[
+    {g:'ક',r:'ka',ex:'as in "cup"'},
+    {g:'ખ',r:'kha',ex:'aspirated k'},
+    {g:'ગ',r:'ga',ex:'as in "go"'},
+    {g:'ઘ',r:'gha',ex:'aspirated g'},
+    {g:'ઙ',r:'nga',ex:'as in "sing"'},
+  ]},
+  {name:'Palatal — ચ-વર્ગ (from palate)',roman:'cha-group',letters:[
+    {g:'ચ',r:'cha',ex:'as in "chair"'},
+    {g:'છ',r:'chha',ex:'aspirated ch'},
+    {g:'જ',r:'ja',ex:'as in "jar"'},
+    {g:'ઝ',r:'jha',ex:'as in "pleasure"'},
+    {g:'ઞ',r:'nya',ex:'as in "canyon"'},
+  ]},
+  {name:'Retroflex — ટ-વર્ગ (tongue curled back)',roman:'ta-group',letters:[
+    {g:'ટ',r:'Ta',ex:'retroflex T'},
+    {g:'ઠ',r:'Tha',ex:'aspirated T'},
+    {g:'ડ',r:'Da',ex:'retroflex D'},
+    {g:'ઢ',r:'Dha',ex:'aspirated D'},
+    {g:'ણ',r:'Na',ex:'retroflex N'},
+  ]},
+  {name:'Dental — ત-વર્ગ (tongue on teeth)',roman:'tha-group',letters:[
+    {g:'ત',r:'ta',ex:'soft t as in Italian'},
+    {g:'થ',r:'tha',ex:'aspirated t'},
+    {g:'દ',r:'da',ex:'soft d'},
+    {g:'ધ',r:'dha',ex:'aspirated d'},
+    {g:'ન',r:'na',ex:'as in "now"'},
+  ]},
+  {name:'Labial — પ-વર્ગ (lips)',roman:'pa-group',letters:[
+    {g:'પ',r:'pa',ex:'as in "spin"'},
+    {g:'ફ',r:'pha',ex:'aspirated p / f'},
+    {g:'બ',r:'ba',ex:'as in "boy"'},
+    {g:'ભ',r:'bha',ex:'aspirated b'},
+    {g:'મ',r:'ma',ex:'as in "mother"'},
+  ]},
+  {name:'Semivowels & Sibilants',roman:'others',letters:[
+    {g:'ય',r:'ya',ex:'as in "yes"'},
+    {g:'ર',r:'ra',ex:'as in "run"'},
+    {g:'લ',r:'la',ex:'as in "love"'},
+    {g:'વ',r:'va',ex:'as in "van"'},
+    {g:'શ',r:'sha',ex:'as in "shoe"'},
+    {g:'ષ',r:'Sha',ex:'retroflex sh'},
+    {g:'સ',r:'sa',ex:'as in "sun"'},
+    {g:'હ',r:'ha',ex:'as in "hat"'},
+    {g:'ળ',r:'La',ex:'retroflex l (unique)'},
+    {g:'ક્ષ',r:'ksha',ex:'k+sha combined'},
+    {g:'જ્ઞ',r:'gna',ex:'j+na combined'},
+  ]},
+];
+
+const matras = [
+  {symbol:'ા',with:'કા',roman:'kaa',vowel:'આ',meaning:'long A sound'},
+  {symbol:'િ',with:'કિ',roman:'ki',vowel:'ઇ',meaning:'short I sound'},
+  {symbol:'ી',with:'કી',roman:'kii',vowel:'ઈ',meaning:'long II sound'},
+  {symbol:'ુ',with:'કુ',roman:'ku',vowel:'ઉ',meaning:'short U sound'},
+  {symbol:'ૂ',with:'કૂ',roman:'kuu',vowel:'ઊ',meaning:'long UU sound'},
+  {symbol:'ે',with:'કે',roman:'ke',vowel:'એ',meaning:'E sound'},
+  {symbol:'ૈ',with:'કૈ',roman:'kai',vowel:'ઐ',meaning:'AI sound'},
+  {symbol:'ો',with:'કો',roman:'ko',vowel:'ઓ',meaning:'O sound'},
+  {symbol:'ૌ',with:'કૌ',roman:'kau',vowel:'ઔ',meaning:'AU sound'},
+  {symbol:'ં',with:'કં',roman:'kan',vowel:'અં',meaning:'nasal sound'},
+  {symbol:'ઃ',with:'કઃ',roman:'kah',vowel:'અઃ',meaning:'visarga sound'},
+  {symbol:'ૃ',with:'કૃ',roman:'kru',vowel:'ઋ',meaning:'RU sound'},
+];
+
+const numbers = [
+  {g:'૦',a:'0',w:'Shunya'},
+  {g:'૧',a:'1',w:'Ek'},
+  {g:'૨',a:'2',w:'Be'},
+  {g:'૩',a:'3',w:'Tran'},
+  {g:'૪',a:'4',w:'Char'},
+  {g:'૫',a:'5',w:'Panch'},
+  {g:'૬',a:'6',w:'Chha'},
+  {g:'૭',a:'7',w:'Saat'},
+  {g:'૮',a:'8',w:'Aath'},
+  {g:'૯',a:'9',w:'Nav'},
+  {g:'૧૦',a:'10',w:'Das'},
+  {g:'૧૧',a:'11',w:'Agyaar'},
+  {g:'૧૨',a:'12',w:'Baaar'},
+  {g:'૨૦',a:'20',w:'Vis'},
+  {g:'૫૦',a:'50',w:'Pachaas'},
+  {g:'૧૦૦',a:'100',w:'So'},
+];
+
+// Build vowels
+const vGrid = document.getElementById('vowel-grid');
+vowels.forEach((v,i)=>{
+  const c = document.createElement('div');
+  c.className='alpha-card';
+  c.innerHTML=`<span class="alpha-guj">${v.g}</span><span class="alpha-roman">${v.r}</span><span class="alpha-eng">${v.name}</span>`;
+  c.onclick=()=>showDetail('vowel',v,i);
+  vGrid.appendChild(c);
+});
+
+function showDetail(type,item,idx){
+  const panelId = type==='vowel'?'vowel-detail':'cons-detail';
+  const panel = document.getElementById(panelId);
+  const cards = document.querySelectorAll(type==='vowel'?'#vowel-grid .alpha-card':'#cons-groups .alpha-card');
+  cards.forEach(c=>c.classList.remove('selected'));
+  if(cards[idx]) cards[idx].classList.add('selected');
+  panel.innerHTML=`
+    <div class="detail-big">${item.g}</div>
+    <div class="detail-info">
+      <div class="detail-type-badge">${type==='vowel'?'VOWEL — સ્વર':'CONSONANT — વ્યંજન'}</div>
+      <div class="detail-roman">${item.r}</div>
+      <div class="detail-name">${item.name||item.r}</div>
+      <div class="detail-example">${item.ex}<br><br>Example word: ${getExample(item.g)}</div>
+    </div>`;
+  panel.classList.add('show');
+}
+
+function getExample(g){
+  const ex={
+    'ક':'ક'+'ા'+'ક'+'ો = Kaako (uncle)',
+    'ગ':'ગ'+'ા'+'ય = Gaay (cow)',
+    'ઘ':'ઘ'+'ર = Ghar (house)',
+    'ચ':'ચ'+'ા'+'ય = Chaay (tea)',
+    'જ':'જ'+'લ = Jal (water)',
+    'ત':'ત'+'ા'+'ર'+'ો = Taaro (star)',
+    'દ':'દ'+'ૂ'+'ધ = Duudh (milk)',
+    'ન':'ન'+'ામ = Naam (name)',
+    'પ':'પ'+'ા'+'ણ'+'ી = Paani (water)',
+    'ભ':'ભ'+'ા'+'ઈ = Bhaai (brother)',
+    'મ':'મ'+'મ'+'્'+'મ'+'ી = Mummy',
+    'ર':'ર'+'ો'+'ટ'+'ી = Roti (bread)',
+    'લ':'લ'+'ગ'+'્'+'ન = Lagna (wedding)',
+    'સ':'સ'+'ા'+'ર'+'ુ = Saaru (good)',
+    'હ':'હ'+'ા'+'થ = Haath (hand)',
+    'અ':'અ'+'મ'+'દ'+'ા'+'વ'+'ા'+'દ = Ahmedabad',
+    'આ':'આ'+'ક'+'ા'+'શ = Aakaash (sky)',
+    'ઇ':'ઇ'+'ચ'+'્'+'છ'+'ા = Ichchha (wish)',
+    'ઉ':'ઉ'+'ઘ'+'ા'+'ડ = Ughaad (open)',
+    'એ':'એ'+'ક = Ek (one)',
+    'ઓ':'ઓ'+'ળ'+'ખ = Olakh (identity)',
+  };
+  return ex[g]||'—';
+}
+
+// Build consonants
+const cWrap = document.getElementById('cons-groups');
+let cIdx=0;
+consonantGroups.forEach(grp=>{
+  const label=document.createElement('div');
+  label.style.cssText='font-family:Space Mono,monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin:1.2rem 0 8px;';
+  label.textContent=grp.name;
+  cWrap.appendChild(label);
+  const grid=document.createElement('div');
+  grid.className='alpha-grid';
+  grp.letters.forEach(l=>{
+    const myIdx=cIdx++;
+    const c=document.createElement('div');
+    c.className='alpha-card';
+    c.innerHTML=`<span class="alpha-guj">${l.g}</span><span class="alpha-roman">${l.r}</span><span class="alpha-eng">${l.ex}</span>`;
+    c.onclick=(()=>{
+      const li=l; const ii=myIdx;
+      return ()=>showConsDetail(li,ii);
+    })();
+    grid.appendChild(c);
+  });
+  cWrap.appendChild(grid);
+});
+
+const consDetailPanel=document.getElementById('cons-detail');
+function showConsDetail(item,idx){
+  consDetailPanel.innerHTML=`
+    <div class="detail-big">${item.g}</div>
+    <div class="detail-info">
+      <div class="detail-type-badge">CONSONANT — વ્યંજન</div>
+      <div class="detail-roman">${item.r}</div>
+      <div class="detail-name">${item.ex}</div>
+      <div class="detail-example">${getExample(item.g)}</div>
+    </div>`;
+  consDetailPanel.classList.add('show');
+  document.querySelectorAll('#cons-groups .alpha-card').forEach((c,i)=>c.classList.toggle('selected',i===idx));
+}
+
+// Build matras
+const mGrid=document.getElementById('matra-grid');
+const mLabel=document.createElement('div');
+mLabel.style.cssText='font-family:Space Mono,monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--saffron);margin-bottom:10px;';
+mLabel.textContent='Vowel sign + ક (ka) = combined syllable';
+mGrid.appendChild(mLabel);
+const mRow=document.createElement('div');
+mRow.className='matra-row';
+matras.forEach(m=>{
+  const c=document.createElement('div');
+  c.className='matra-card';
+  c.innerHTML=`<div class="matra-symbol">${m.with}</div><div class="matra-info"><div class="matra-roman">${m.roman} &nbsp;·&nbsp; sign: ${m.symbol}</div><div class="matra-example">${m.meaning}</div></div>`;
+  mRow.appendChild(c);
+});
+mGrid.appendChild(mRow);
+
+// Build numbers
+const nGrid=document.getElementById('num-grid');
+numbers.forEach(n=>{
+  const c=document.createElement('div');
+  c.className='num-card';
+  c.innerHTML=`<span class="num-guj">${n.g}</span><span class="num-arabic">${n.a}</span><span class="num-word">${n.w}</span>`;
+  nGrid.appendChild(c);
+});
+
+// Quiz
+const allLetters=[...vowels,...consonantGroups.flatMap(g=>g.letters)];
+let qScore=0,qTotal=0,qCurrent=null,qAnswered=false;
+const progDots=[];
+
+function initQuiz(){
+  const pd=document.getElementById('quiz-progress');
+  pd.innerHTML='';
+  for(let i=0;i<15;i++){
+    const d=document.createElement('div');
+    d.className='prog-dot';
+    d.id='dot-'+i;
+    pd.appendChild(d);
+    progDots.push(d);
+  }
+  nextQuestion();
+}
+
+function nextQuestion(){
+  if(qTotal>=15){
+    document.getElementById('q-letter').textContent='🎉';
+    document.getElementById('quiz-prompt'+'').textContent='';
+    document.getElementById('q-feedback').textContent=`Final score: ${qScore} / 15`;
+    document.getElementById('q-options').innerHTML='<div style="color:rgba(255,255,255,0.6);font-size:14px;grid-column:1/-1;font-style:italic;">Refresh to try again!</div>';
+    document.getElementById('q-next').classList.remove('show');
+    return;
+  }
+  qAnswered=false;
+  const idx=Math.floor(Math.random()*allLetters.length);
+  qCurrent=allLetters[idx];
+  document.getElementById('q-letter').textContent=qCurrent.g;
+  document.getElementById('q-feedback').textContent='';
+  document.getElementById('q-next').classList.remove('show');
+
+  const opts=new Set([qCurrent.r]);
+  while(opts.size<4){
+    opts.add(allLetters[Math.floor(Math.random()*allLetters.length)].r);
+  }
+  const shuffled=[...opts].sort(()=>Math.random()-0.5);
+  const optWrap=document.getElementById('q-options');
+  optWrap.innerHTML='';
+  shuffled.forEach(o=>{
+    const btn=document.createElement('button');
+    btn.className='quiz-opt';
+    btn.textContent=o;
+    btn.onclick=()=>answer(btn,o);
+    optWrap.appendChild(btn);
+  });
+}
+
+function answer(btn,chosen){
+  if(qAnswered)return;
+  qAnswered=true;
+  qTotal++;
+  const correct=chosen===qCurrent.r;
+  if(correct){
+    qScore++;
+    btn.classList.add('correct');
+    document.getElementById('q-feedback').textContent='Correct! સાચું!';
+  } else {
+    btn.classList.add('wrong');
+    document.getElementById('q-feedback').textContent=`Not quite — it was "${qCurrent.r}"`;
+    document.querySelectorAll('.quiz-opt').forEach(b=>{
+      if(b.textContent===qCurrent.r)b.classList.add('correct');
+    });
+  }
+  document.getElementById('q-score').textContent=`Score: ${qScore} / ${qTotal}`;
+  const dotIdx=qTotal-1;
+  if(progDots[dotIdx]) progDots[dotIdx].classList.add('done');
+  document.getElementById('q-next').classList.add('show');
+}
+
+// Conversations
+const convTopics = [
+  {
+    id:'greetings', label:'Greetings', icon:'નમ',
+    desc:'Essential phrases to say hello, goodbye and ask how someone is.',
+    phrases:[
+      {g:'નમસ્તે',r:'Namaste',e:'Hello / Greetings',note:'Used any time of day, with anyone. Safe universal greeting.',usage:'With elders, strangers, shopkeepers'},
+      {g:'કેમ છો?',r:'Kem chho?',e:'How are you?',note:'"Tame" (you) is implied. Use this with people you meet regularly.',usage:'Formal / semi-formal'},
+      {g:'સારું છે, આભાર',r:'Saaru chhe, aabhaar',e:'I\'m fine, thank you',note:'"Saaru" = good/fine. "Aabhaar" = thanks. Simple and polite.',usage:'Response to Kem chho'},
+      {g:'તમે કેમ છો?',r:'Tame kem chho?',e:'And how are you? (you specifically)',note:'Add "tame" to turn it back to them. Very natural in conversation.',usage:'After someone asks you'},
+      {g:'સવારે સારું',r:'Savaar saaru',e:'Good morning',note:'Literal: "Morning good". Less formal than Namaste in the morning.',usage:'Morning greetings'},
+      {g:'આવજો',r:'Aavjo',e:'Goodbye / See you',note:'Literal: "Come again". The standard Gujarati farewell — warmer than bye.',usage:'Parting, leaving a shop'},
+      {g:'ફરી મળીશું',r:'Fari malishun',e:'We will meet again',note:'A friendly goodbye when you expect to see them again.',usage:'Friends, colleagues'},
+      {g:'રાત સારી',r:'Raat saari',e:'Good night',note:'"Raat" = night. Said when parting at night or before sleeping.',usage:'Evening / bedtime'},
+    ],
+    dialogue:{
+      title:'Sample conversation — Meeting someone',
+      lines:[
+        {sp:'A',g:'નમસ્તે! કેમ છો?',r:'Namaste! Kem chho?',e:'Hello! How are you?'},
+        {sp:'B',g:'સારું છે, આભાર. તમે?',r:'Saaru chhe, aabhaar. Tame?',e:'Fine, thanks. And you?'},
+        {sp:'A',g:'હા, સારું. ઘણા દિવસ પછી મળ્યા!',r:'Haa, saaru. Ghana divas pachhi malya!',e:'Yes, fine. We met after many days!'},
+        {sp:'B',g:'સાચું! ફરી મળીશું. આવજો!',r:'Saachhu! Fari malishun. Aavjo!',e:'True! We\'ll meet again. Bye!'},
+      ]
+    }
+  },
+  {
+    id:'shopping', label:'Shopping', icon:'ખર',
+    desc:'Phrases for markets, shops and bargaining — very useful in Vadodara\'s local bazaars.',
+    phrases:[
+      {g:'આ કેટલાનું છે?',r:'Aa ketlaanu chhe?',e:'How much does this cost?',note:'"Aa" = this. "Ketlaanu" = how much. The most useful shopping phrase.',usage:'Any shop, market'},
+      {g:'સસ્તું આપો',r:'Sastu aapo',e:'Give it cheaper / discount please',note:'"Sastu" = cheap. Direct and polite way to ask for a discount.',usage:'Bargaining at market'},
+      {g:'બહુ મોઘું છે',r:'Bahu moghhu chhe',e:'It\'s too expensive',note:'"Bahu" = very/too much. "Moghhu" = expensive. Use with a smile!',usage:'When price is too high'},
+      {g:'ઠીક છે, લઉ છું',r:'Theek chhe, lau chhun',e:'Okay, I\'ll take it',note:'"Lau chhun" = I am taking/buying. Signals you agree to buy.',usage:'After agreeing on price'},
+      {g:'બીજું કાંઈ છે?',r:'Bijhu kaai chhe?',e:'Is there anything else / Do you have others?',note:'"Bijhu" = other/another. Useful when looking for variety.',usage:'Asking for more options'},
+      {g:'નહીં જોઈએ, આભાર',r:'Nahin joiye, aabhaar',e:'I don\'t need it, thanks',note:'Polite way to decline a shopkeeper pushing products.',usage:'Declining a sale'},
+      {g:'પૈસા ક્યાં આપવાના?',r:'Paisa kyaan aapvana?',e:'Where do I pay?',note:'"Paisa" = money. "Kyaan" = where. Common in larger shops.',usage:'Supermarkets, stores'},
+      {g:'કૅશ કે કાર્ડ?',r:'Cash ke card?',e:'Cash or card?',note:'Direct mix of English + Gujarati — very common in modern shops.',usage:'Payment at shops'},
+    ],
+    dialogue:{
+      title:'Sample conversation — At a vegetable market',
+      lines:[
+        {sp:'A',g:'ભૈ, ટામેટા કેટલાના?',r:'Bhai, taameta ketlaana?',e:'Brother, how much are the tomatoes?'},
+        {sp:'B',g:'ચાળીસ રૂપિયે કિલો',r:'Chaaalis rupiye kilo',e:'Forty rupees per kilo'},
+        {sp:'A',g:'બહુ મોઘું! ત્રીસમાં આપો',r:'Bahu moghhu! Triisma aapo',e:'Too expensive! Give it for thirty'},
+        {sp:'B',g:'પાંત્રીસ લઈ લો, ભૈ',r:'Paantris lai lo, bhai',e:'Take it for thirty-five, brother'},
+        {sp:'A',g:'ઠીક છે. એક કિલો આપો',r:'Theek chhe. Ek kilo aapo',e:'Okay. Give me one kilo'},
+      ]
+    }
+  },
+  {
+    id:'food', label:'Food & Tea', icon:'ચા',
+    desc:'Gujaratis love food and chai — learn how to order, compliment and talk about food.',
+    phrases:[
+      {g:'ચા આવશે?',r:'Chaa aavse?',e:'Will you have tea?',note:'The most Gujarati sentence ever. Offering chai is a sign of warmth and hospitality.',usage:'Offering guests tea'},
+      {g:'ભૂખ લાગી છે',r:'Bhukh laagi chhe',e:'I am hungry',note:'"Bhukh" = hunger. "Laagi" = has struck/felt. Very natural expression.',usage:'Telling someone you\'re hungry'},
+      {g:'ખૂબ સ્વાદિષ્ટ છે!',r:'Khub svaadisht chhe!',e:'It\'s very delicious!',note:'"Khub" = very. "Svaadisht" = tasty/delicious. Compliment the cook!',usage:'After eating good food'},
+      {g:'વધુ આપશો?',r:'Vadhu aapsho?',e:'Will you give more?',note:'"Vadhu" = more. Polite request for seconds — always appreciated by hosts.',usage:'Asking for second serving'},
+      {g:'પાણી આપશો?',r:'Paani aapsho?',e:'Will you give water?',note:'"Paani" = water. Add "please" by being polite in tone.',usage:'Asking for water at table'},
+      {g:'ખીચડી, ઢોકળા કે ઠેપલા?',r:'Khichdi, dhokla ke thepla?',e:'Khichdi, Dhokla or Thepla?',note:'Classic Gujarati food choices. Knowing the names impresses locals greatly!',usage:'Food conversation'},
+      {g:'ઘી ઘણું નાખ્યું?',r:'Ghee ghanu naakhyu?',e:'Did you put a lot of ghee?',note:'Gujaranis love ghee. This is as much a compliment as a question!',usage:'Complimenting food'},
+      {g:'પેટ ભરાઈ ગયું',r:'Pet bharaai gayu',e:'My stomach is full',note:'"Pet" = stomach. "Bharaai gayu" = got filled up. Polite way to stop eating.',usage:'After finishing a meal'},
+    ],
+    dialogue:{
+      title:'Sample conversation — At someone\'s home',
+      lines:[
+        {sp:'A',g:'આવો, બેસો. ચા આવશે?',r:'Aavo, beso. Chaa aavse?',e:'Come, sit. Will you have tea?'},
+        {sp:'B',g:'હા, ચોક્કસ! આભાર',r:'Haa, chokkas! Aabhaar',e:'Yes, definitely! Thanks'},
+        {sp:'A',g:'ઢોકળા ખાશો? હમણાં જ બનાવ્યા',r:'Dhokla khasho? Hamna ja banaavya',e:'Will you have dhokla? Just made them now'},
+        {sp:'B',g:'ખૂબ સ્વાદિષ્ટ છે! વધુ આપશો?',r:'Khub svaadisht chhe! Vadhu aapsho?',e:'It\'s very delicious! Will you give more?'},
+        {sp:'A',g:'જરૂર! ખૂબ ખાઓ',r:'Jaroor! Khub khao',e:'Of course! Eat a lot'},
+      ]
+    }
+  },
+  {
+    id:'directions', label:'Directions', icon:'રસ્',
+    desc:'Getting around Vadodara — ask and give directions confidently.',
+    phrases:[
+      {g:'માફ કરજો, રસ્તો બતાવશો?',r:'Maaf karjo, rasto batavsho?',e:'Excuse me, will you show the way?',note:'"Maaf karjo" = sorry/excuse me. "Rasto" = road/path. Very polite opener.',usage:'Asking for directions'},
+      {g:'અહીં ક્યાં છે?',r:'Aheen kyaan chhe?',e:'Where is this place?',note:'"Aheen" = here/this place. Point at address or say place name before this.',usage:'Asking for a location'},
+      {g:'સીધા જાઓ',r:'Sidhaa jao',e:'Go straight',note:'"Sidhaa" = straight. "Jao" = go. The most common direction given.',usage:'Giving/receiving directions'},
+      {g:'ડાબે વળો',r:'Daabe valo',e:'Turn left',note:'"Daabe" = left. "Valo" = turn. Essential direction word.',usage:'Navigation'},
+      {g:'જમણે વળો',r:'Jamane valo',e:'Turn right',note:'"Jamane" = right. Pair with "Daabe" to navigate anywhere.',usage:'Navigation'},
+      {g:'નજીક છે કે દૂર?',r:'Najeek chhe ke door?',e:'Is it near or far?',note:'"Najeek" = near. "Door" = far. Good follow-up question after getting directions.',usage:'Judging distance'},
+      {g:'બસ સ્ટેન્ડ ક્યાં છે?',r:'Bus stand kyaan chhe?',e:'Where is the bus stand?',note:'Very practical in Vadodara. "Kyaan" = where.',usage:'Finding transport'},
+      {g:'ઓટો કરશો?',r:'Auto karsho?',e:'Will you take auto (rickshaw)?',note:'Asking an auto driver. Or asking a friend if they\'ll book one.',usage:'Getting an auto rickshaw'},
+    ],
+    dialogue:{
+      title:'Sample conversation — Asking for directions',
+      lines:[
+        {sp:'A',g:'ભૈ, માફ કરજો. લક્ષ્મી વિલાસ પેલેસ ક્યાં છે?',r:'Bhai, maaf karjo. Laxmi Vilas Palace kyaan chhe?',e:'Brother, excuse me. Where is Laxmi Vilas Palace?'},
+        {sp:'B',g:'સીધા જાઓ, પછી ડાબે વળો',r:'Sidhaa jao, pachhi daabe valo',e:'Go straight, then turn left'},
+        {sp:'A',g:'નજીક છે?',r:'Najeek chhe?',e:'Is it nearby?'},
+        {sp:'B',g:'હા, પાંચ મિનિટ ચાલવાનું',r:'Haa, paanch minute chaalvaanu',e:'Yes, five minutes\' walk'},
+        {sp:'A',g:'ખૂબ આભાર!',r:'Khub aabhaar!',e:'Thank you very much!'},
+      ]
+    }
+  },
+  {
+    id:'family', label:'Family & People', icon:'ઘર',
+    desc:'Gujarati family terms and how to introduce yourself and talk about people.',
+    phrases:[
+      {g:'તમારું નામ શું છે?',r:'Tamaaru naam shhu chhe?',e:'What is your name?',note:'"Tamaaru" = your (respectful). "Naam" = name. Standard introduction question.',usage:'Meeting someone new'},
+      {g:'મારું નામ ___ છે',r:'Maaru naam ___ chhe',e:'My name is ___',note:'"Maaru" = my. Fill in your name. Simple self-introduction.',usage:'Introducing yourself'},
+      {g:'તમે ક્યાંના છો?',r:'Tame kyaanaa chho?',e:'Where are you from?',note:'"Kyaanaa" = from where. A very common icebreaker with strangers.',usage:'Making conversation'},
+      {g:'હું વડોદરાનો/વડોદરાની છું',r:'Hu Vadodaraano/ni chhun',e:'I am from Vadodara',note:'"-no" for male, "-ni" for female. Showing origin with pride!',usage:'Telling your city'},
+      {g:'આ મારા પિતા છે',r:'Aa maaraa pitaa chhe',e:'This is my father',note:'"Pitaa" = father (formal). "Baapuji" is more affectionate.',usage:'Introductions'},
+      {g:'ભૈ / ભાઈ',r:'Bhai',e:'Brother (also used for any man)',note:'Gujaratis call any man "Bhai" — stranger, friend, shopkeeper. Very warm.',usage:'Addressing men casually'},
+      {g:'બેન / દીદી',r:'Ben / Didi',e:'Sister (also used for any woman)',note:'"Ben" is the Gujarati equivalent — used for any woman respectfully.',usage:'Addressing women'},
+      {g:'કાકા / કાકી',r:'Kaakaa / Kaaki',e:'Uncle / Aunty (father\'s side)',note:'Gujarati family terms are very specific. Kaaka = father\'s brother, Kaaki = his wife.',usage:'Extended family'},
+    ],
+    dialogue:{
+      title:'Sample conversation — Self introduction',
+      lines:[
+        {sp:'A',g:'નમસ્તે! તમારું નામ શું છે?',r:'Namaste! Tamaaru naam shhu chhe?',e:'Hello! What is your name?'},
+        {sp:'B',g:'મારું નામ અર્જુન છે. તમે?',r:'Maaru naam Arjun chhe. Tame?',e:'My name is Arjun. And you?'},
+        {sp:'A',g:'હું પ્રિયા. તમે ક્યાંના છો?',r:'Hu Priya. Tame kyaanaa chho?',e:'I\'m Priya. Where are you from?'},
+        {sp:'B',g:'હું વડોદરાનો છું. તમે?',r:'Hu Vadodaraano chhun. Tame?',e:'I\'m from Vadodara. You?'},
+        {sp:'A',g:'હું પણ વડોદરાની છું!',r:'Hu pan Vadodaraani chhun!',e:'I\'m also from Vadodara!'},
+      ]
+    }
+  },
+  {
+    id:'feelings', label:'Feelings & Responses', icon:'સાર',
+    desc:'Express agreement, surprise, gratitude and emotions in everyday Gujarati.',
+    phrases:[
+      {g:'હા / ના',r:'Haa / Naa',e:'Yes / No',note:'Short and clear. "Haa" is softer than English yes. "Naa" with a head shake is universal.',usage:'All the time'},
+      {g:'ખૂબ સારું!',r:'Khub saaru!',e:'Very good! / Excellent!',note:'"Khub" = very. "Saaru" = good. The most common positive response.',usage:'Approval, praise'},
+      {g:'સાચું?',r:'Saachhu?',e:'Really? / Is that true?',note:'A one-word surprised response. Raise your eyebrows for effect.',usage:'Expressing surprise'},
+      {g:'ઠીક છે',r:'Theek chhe',e:'It\'s okay / Alright',note:'The Gujarati "it\'s fine". Used for agreeing, accepting, or showing something is acceptable.',usage:'Agreement, casual responses'},
+      {g:'ખબર નથી',r:'Khabar nathi',e:'I don\'t know',note:'"Khabar" = news/knowledge. "Nathi" = not. Very useful when you\'re unsure.',usage:'When you don\'t know something'},
+      {g:'મને સમજાયું નહીં',r:'Mane samjayu nahin',e:'I didn\'t understand',note:'"Mane" = to me. "Samjayu" = understood. Politely say this when confused.',usage:'When you need clarification'},
+      {g:'ધીમે બોલો, please',r:'Dhime bolo',e:'Please speak slowly',note:'"Dhime" = slowly. "Bolo" = speak. Very helpful while learning!',usage:'Learning Gujarati'},
+      {g:'મને ગુજરાતી શીખવો!',r:'Mane Gujarati sheekhvo!',e:'Teach me Gujarati!',note:'"Sheekhvo" = to teach. Locals will love that you said this in Gujarati!',usage:'With native speakers'},
+    ],
+    dialogue:{
+      title:'Sample conversation — Responding naturally',
+      lines:[
+        {sp:'A',g:'આવતીકાલે ફિલ્મ જોવા આવશો?',r:'Aavaatikale film jova aavsho?',e:'Will you come to watch a film tomorrow?'},
+        {sp:'B',g:'ક્યારે? સવારે કે સાંજે?',r:'Kyaare? Saavare ke saanje?',e:'When? Morning or evening?'},
+        {sp:'A',g:'સાંજે સાત વાગ્યે',r:'Saanje saat vaagye',e:'Evening at seven o\'clock'},
+        {sp:'B',g:'ઠીક છે! ખૂબ સારું',r:'Theek chhe! Khub saaru',e:'Alright! Very good'},
+        {sp:'A',g:'સાચ્ચે? આવશો ને!',r:'Saachche? Aavsho ne!',e:'Really? You will come right!'},
+      ]
+    }
+  },
+];
+
+function buildConversations(){
+  const topicWrap = document.getElementById('conv-topics');
+  const contentWrap = document.getElementById('conv-content');
+  topicWrap.innerHTML=''; contentWrap.innerHTML='';
+
+  convTopics.forEach((topic,ti)=>{
+    const btn=document.createElement('button');
+    btn.className='topic-btn'+(ti===0?' active':'');
+    btn.textContent=topic.label;
+    btn.onclick=()=>{
+      document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.conv-block').forEach(b=>b.classList.remove('active'));
+      document.getElementById('conv-'+topic.id).classList.add('active');
+    };
+    topicWrap.appendChild(btn);
+
+    const block=document.createElement('div');
+    block.className='conv-block'+(ti===0?' active':'');
+    block.id='conv-'+topic.id;
+
+    // Intro banner
+    let html=`<div class="conv-intro">
+      <div class="conv-intro-icon">${topic.icon}</div>
+      <div class="conv-intro-text">
+        <div class="conv-intro-title">${topic.label}</div>
+        <div class="conv-intro-desc">${topic.desc}</div>
+      </div>
+    </div>`;
+
+    // Phrases
+    html+=`<div class="phrase-list">`;
+    topic.phrases.forEach((p,pi)=>{
+      html+=`<div class="phrase-card" onclick="togglePhrase(this)">
+        <div class="phrase-top">
+          <div class="phrase-num">${String(pi+1).padStart(2,'0')}</div>
+          <div class="phrase-main">
+            <div class="phrase-guj">${p.g}</div>
+            <div class="phrase-roman">${p.r}</div>
+            <div class="phrase-eng">${p.e}</div>
+          </div>
+        </div>
+        <div class="phrase-detail">
+          <div class="phrase-note">${p.note}</div>
+          <span class="phrase-usage">${p.usage}</span>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+
+    // Dialogue
+    html+=`<div class="dialogue-box">
+      <div class="dialogue-title">${topic.dialogue.title}</div>`;
+    topic.dialogue.lines.forEach(l=>{
+      html+=`<div class="dialogue-line">
+        <span class="speaker-tag speaker-${l.sp.toLowerCase()}">${l.sp}</span>
+        <div class="dialogue-content">
+          <div class="dial-guj">${l.g}</div>
+          <div class="dial-roman">${l.r}</div>
+          <div class="dial-eng">${l.e}</div>
+        </div>
+      </div>`;
+    });
+    html+=`</div>`;
+
+    block.innerHTML=html;
+    contentWrap.appendChild(block);
+  });
+}
+
+function togglePhrase(card){
+  const isOpen=card.classList.contains('expanded');
+  document.querySelectorAll('.phrase-card.expanded').forEach(c=>c.classList.remove('expanded'));
+  if(!isOpen) card.classList.add('expanded');
+}
+
+buildConversations();
+
+function showSection(name){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('sec-'+name).classList.add('active');
+  event.target.classList.add('active');
+  if(name==='quiz'&&qTotal===0) initQuiz();
+}
+</script>
+</body>
+</html>
